@@ -1,0 +1,8 @@
+.container {
+  font-size: 110%;
+}
+
+.container > .navbar-brand {
+  font-weight: bold;
+  font-size: 105%;
+}
