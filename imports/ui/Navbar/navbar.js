@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
-import '../now-ui-kit.css';
-
-import Login from './Login/login.js'
+import '../../now-ui-kit.css';
+import './navbar.css';
 
 // App component - represents the whole app
 export default class navbar extends Component {
