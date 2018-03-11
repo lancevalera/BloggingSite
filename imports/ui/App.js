@@ -7,6 +7,7 @@ import '../now-ui-kit.css';
 import Login from './Login/login.js';
 import Navbar from './Navbar/navbar.js';
 import Home from './Home/home.js';
+import Profile from './Profile/profile.js';
 
 // App component - represents the whole app
 export default class App extends Component {
@@ -21,8 +22,9 @@ export default class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path='/' component={Login}/>
-            <Route path='/Login' component={Login}/>
+            <Route path='/login' component={Login}/>
             <Route path='/home' component={Home}/>
+            <Route path='/profile' component={Profile}/>
           </Switch>
           </BrowserRouter>
       </div>
