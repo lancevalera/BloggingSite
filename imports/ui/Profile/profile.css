@@ -1,0 +1,16 @@
+.rounded-circle {
+  width: 80%;
+  height: 265px;
+  border: 3px solid white;
+}
+
+.piccontainer {
+  margin-top: -6.5%;
+}
+
+.row {
+}
+
+.page-header {
+  height: 50vh;
+}
