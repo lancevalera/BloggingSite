@@ -14,7 +14,7 @@ export default class Profile extends Component {
   render() {
     return (
       <div>
-      <Header image='/images/profile.jpeg' textValue='' />
+      <Header image='/images/profile.jpeg' textValue='' small={true}/>
 
         <div className="container piccontainer">
           <div className='col-sm-4'>
