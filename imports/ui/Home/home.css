@@ -9,11 +9,24 @@
 
 .content-center {
   margin: auto;
-  width: 50% !important;
+  width: 60% !important;
 }
 
 .crop img {
     width: 400px;
     height: 300px;
     margin: -75px 0 0 0px;
+}
+
+.card-title {
+  margin-bottom: 0px !important;
+}
+
+.card-text {
+  margin-bottom: 0.5em !important;
+}
+
+.description {
+  color: #616161;
+  font-size: 1em !important;
 }
