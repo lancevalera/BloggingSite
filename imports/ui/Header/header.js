@@ -19,7 +19,7 @@ export default class Header extends Component {
 
   render() {
     return (
-      <div className="page-header page-header-small">
+      <div className={'page-header ' + (this.props.small ? 'page-header-small' : '')}>
         <div className="page-header-image" style={this.state}></div>
         <div className="container">
           <div className="content-center">
