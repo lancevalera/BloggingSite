@@ -5,3 +5,7 @@
 .pull-left {
   text-align: left;
 }
+
+.page-header {
+  height: 100vh !important;
+}
