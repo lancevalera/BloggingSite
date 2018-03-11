@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom'
 
 import '../../now-ui-kit.css';
 import './navbar.css';
 
-// App component - represents the whole app
+import NavbarLinks from './navbarlinks.js';
+import DropdownLinks from './dropdownlinks.js'
+
 export default class navbar extends Component {
 
   render() {
+    console.log(this.props);
     return (
       <div>
       <nav className="navbar navbar-expand-lg fixed-top bg-primary navbar-transparent">
         <div className="container">
           <div className='dropdown button-dropdown'>
-            <a href="#" className='dropdown-toggle' id='navbarDropdownMenuLink1' data-toggle='dropdown'>
-              <span className='button-bar'></span>
-              <span className='button-bar'></span>
-              <span className='button-bar'></span>
-            </a>
-          <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-            <a className="dropdown-item" href="#">About</a>
-            <a className="dropdown-item" href="#">Contact Us</a>
-            <div className="dropdown-divider"></div>
-            <a className="dropdown-item" href="#">Logout</a>
-          </ul>
+            <DropdownLinks loggedIn={this.props.isLoggedIn} />
         </div>
         <div className="navbar-translate">
             <a className="navbar-brand">
@@ -36,20 +30,11 @@ export default class navbar extends Component {
         </div>
 
         <div className="collapse navbar-collapse justify-content-end" id="navigation">
-    	    <ul className="navbar-nav" >
-                <li className="nav-item">
-                    <a className="nav-link">
-                        Home
-                    </a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link">Profile</a>
-                </li>
-            </ul>
+          <NavbarLinks loggedIn={this.props.isLoggedIn} />
         </div>
+      </div>
+    </nav>
     </div>
-</nav>
-</div>
     );
   }
 }
