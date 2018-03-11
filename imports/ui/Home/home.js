@@ -5,14 +5,12 @@ import './home.css';
 import Header from '../Header/header.js';
 import Cards from './card.js';
 
-
-// App component - represents the whole app
 export default class Home extends Component {
 
   render() {
     return (
       <div>
-      <Header image='/images/home.jpeg' textValue='Your home page' />
+      <Header image='/images/home.jpeg' textValue='Your home page' small={true}/>
 
       <div className='container'>
         <ul className='nav nav-tabs justify-content-center'>
