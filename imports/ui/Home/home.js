@@ -30,11 +30,13 @@ export default class Home extends Component {
       </div>
 
       <div className='container maincontent'>
-      <div className='content-center'>
+      <div className='row'>
+      <h3> Popular </h3>
         <div className='card'>
           <div className='card-body'>
             <h5 className="card-title">Card title</h5>
-            <p className='card-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p className='card-text description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p className='card-text author'> Posted By: </p>
           </div>
         </div>
         </div>
