@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 
 import '../../now-ui-kit.css';
 import './home.css';
-
-const style = {
-  backgroundImage: "url(" + window.location.protocol + '//' +  window.location.host + '/images/home.jpeg'  + ")"
-}
+import Header from '../Header/header.js';
+import Cards from './card.js';
 
 
 // App component - represents the whole app
@@ -14,14 +12,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-      <div className="page-header page-header-small" filter-color="blue">
-        <div className="page-header-image" style={style}></div>
-        <div className="container">
-          <div className="content-center">
-            <h1> Your home page </h1>
-          </div>
-        </div>
-      </div>
+      <Header image='/images/home.jpeg' textValue='Your home page' />
 
       <div className='container'>
         <ul className='nav nav-tabs justify-content-center'>
@@ -30,18 +21,12 @@ export default class Home extends Component {
       </div>
 
       <div className='container maincontent'>
-      <div className='row'>
-      <h3> Popular </h3>
-        <div className='card'>
-          <div className='card-body'>
-            <h5 className="card-title">Card title</h5>
-            <p className='card-text description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p className='card-text author'> Posted By: </p>
-          </div>
-        </div>
+        <div className='row'>
+          <h3> Popular </h3>
+          <Cards />
         </div>
       </div>
-      </div>
+    </div>
     );
   }
 }
