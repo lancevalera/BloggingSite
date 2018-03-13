@@ -5,12 +5,31 @@ import './home.css';
 import Header from '../Header/header.js';
 import Cards from './card.js';
 
+import { Posts } from '../../api/posts.js';
+
 export default class Home extends Component {
+  constructor(props){
+    super(props);
+
+    var allPosts = Posts.find({}).fetch();
+
+    this.state = {
+      posts: allPosts
+    }
+  }
+
+  renderCards() {
+    console.log(this.state);
+    return this.state.posts.map((post) => (
+      <Cards key={post._id} body={post} />
+    ));
+  }
 
   render() {
+    console.log(this.props);
     return (
       <div>
-      <Header image='/images/home.jpeg' textValue='Your home page' small={true}/>
+      <Header image='/images/home.jpeg' textValue='' small={true}/>
 
       <div className='container'>
         <ul className='nav nav-tabs justify-content-center'>
@@ -19,9 +38,9 @@ export default class Home extends Component {
       </div>
 
       <div className='container maincontent'>
-        <div className='row'>
+        <div className='col-md-8 content-center'>
           <h3> Popular </h3>
-          <Cards />
+          {this.renderCards()}
         </div>
       </div>
     </div>
