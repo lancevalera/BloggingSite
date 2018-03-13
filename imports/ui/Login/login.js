@@ -4,8 +4,7 @@ import '../../now-ui-kit.css';
 import './login.css';
 
 import LoginForm from './loginForm.js';
-/*import backgroundImage from 'process.env.PUBLIC_URL + images/login.jpeg';
-*/
+
 const style = {
   backgroundImage: "url(" + window.location.protocol + '//' +  window.location.host + '/images/login.jpeg'  + ")"
 }
@@ -15,12 +14,13 @@ export default class Login extends Component {
 
   handleSignIn(e) {
     e.preventDefault();
-    console.log(this.refs.username);
-    this.props.onLogin(this.refs.username.value, this.refs.password.value);
+    var isLoggedIn = this.props.onLogin(this.refs.username.value, this.refs.password.value);
+
+    if(isLoggedIn)
+      this.props.router.history.push("/");
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="page-header" filter-color="blue">
         <div className="page-header-image" style={style}></div>
@@ -34,7 +34,7 @@ export default class Login extends Component {
                       <input type="text" ref="username" placeholder="Username" className="form-control" style={{color: 'white'}} />
                     </div>
                     <div className="input-group form-group-no-border input-lg">
-                      <input type="text" ref="password" placeholder="Password" className="form-control" style={{color: 'white'}} />
+                      <input type="password" ref="password" placeholder="Password" className="form-control" style={{color: 'white'}} />
                     </div>
                   </div>
                   <div className="footer text-center submitbtn">
