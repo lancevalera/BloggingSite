@@ -5,13 +5,10 @@ import './profile.css';
 
 import Header from '../Header/header.js';
 
-const style = {
-  backgroundImage: "url(" + window.location.protocol + '//' +  window.location.host + '/images/profile.jpeg'  + ")"
-}
-
 export default class Profile extends Component {
 
   render() {
+    console.log(this.props);
     return (
       <div>
       <Header image='/images/profile.jpeg' textValue='' small={true}/>
