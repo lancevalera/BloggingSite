@@ -10,7 +10,6 @@ import DropdownLinks from './dropdownlinks.js'
 export default class navbar extends Component {
 
   render() {
-    console.log(this.props);
     return (
       <div>
       <nav className="navbar navbar-expand-lg fixed-top bg-primary navbar-transparent">
