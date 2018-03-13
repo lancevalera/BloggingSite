@@ -7,7 +7,7 @@ export default class Cards extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className='card'>
+      <div className='card home-card'>
         <div className='card-body'>
           <h5 className="card-title">{this.props.body.title}</h5>
           <p className='card-text description'>{this.props.body.header}</p>

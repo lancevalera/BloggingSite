@@ -2,6 +2,10 @@
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2) !important;
 }
 
+.home-card {
+  width: 40% !important;
+}
+
 .crop {
     height: 150px;
     overflow: hidden;
