@@ -9,3 +9,7 @@
 .page-header {
   height: 100vh !important;
 }
+
+.card {
+  width: 60% !important;
+}
