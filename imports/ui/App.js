@@ -15,6 +15,7 @@ import { Users } from '../api/users.js';
 // App component - represents the whole app
 export default class App extends Component {
   constructor(props){
+    Meteor.subscribe('users');
     super(props);
 
     this.state = {
