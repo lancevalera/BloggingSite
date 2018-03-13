@@ -9,13 +9,20 @@ import { Posts } from '../../api/posts.js';
 
 export default class Home extends Component {
   constructor(props){
+    Meteor.subscribe('posts');
     super(props);
-
-    var allPosts = Posts.find({}).fetch();
-
     this.state = {
-      posts: allPosts
+      posts: null
     }
+  }
+
+  componentWillMount() {
+    var allPosts = Posts.find({}).fetch();
+    console.log(Posts.find({}).fetch());
+
+    this.setState({
+      posts: allPosts
+    })
   }
 
   renderCards() {
@@ -29,7 +36,7 @@ export default class Home extends Component {
     console.log(this.props);
     return (
       <div>
-      <Header image='/images/home.jpeg' textValue='' small={true}/>
+      <Header image='/images/home.jpeg' textValue={this.props.user ? 'Hello ' + this.props.user.firstname : ''} small={true}/>
 
       <div className='container'>
         <ul className='nav nav-tabs justify-content-center'>
@@ -38,7 +45,7 @@ export default class Home extends Component {
       </div>
 
       <div className='container maincontent'>
-        <div className='col-md-8 content-center'>
+        <div className='col-md-12'>
           <h3> Popular </h3>
           {this.renderCards()}
         </div>
