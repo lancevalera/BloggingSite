@@ -24,7 +24,7 @@ export default class Profile extends Component {
         <div className='container'>
           <div className='row' style="margin-top: 2%; margin-bottom: 2%;" style={{marginTop: '2%', marginBottom: '2%'}}>
             <div className='col-sm-4'>
-              <h3 style={{textAlign: 'center'}}> JAMES SCHULTZ </h3>
+              <h3 style={{textAlign: 'center'}}> {this.props.user.fname + ' ' + this.props.user.lname} </h3>
               <div className='biocontainer'>
                 <p></p>
               </div>
