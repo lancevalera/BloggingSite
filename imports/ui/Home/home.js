@@ -29,7 +29,7 @@ export default class Home extends Component {
   renderCards() {
     console.log(this.state);
     return this.state.posts.map((post) => (
-      <Cards key={post._id} body={post} />
+      <Link to={'/post/' + post._id}><Cards key={post._id} body={post} /></Link>
     ));
   }
 
