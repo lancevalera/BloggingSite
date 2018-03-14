@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 import '../../now-ui-kit.css';
 import './home.css';
@@ -32,11 +33,16 @@ export default class Home extends Component {
     ));
   }
 
+  renderAddButton(){
+    if(this.props.user != null)
+      return <Link to='/create' className="btn btn-primary btn-round addbutton">Add Post</Link>
+  }
+
   render() {
     console.log(this.props);
     return (
       <div>
-      <Header image='/images/home.jpeg' textValue={this.props.user ? 'Hello ' + this.props.user.firstname : ''} small={true}/>
+      <Header image='/images/home.jpeg' textValue={this.props.user ? 'Hello ' + this.props.user.fname : ''} small={true}/>
 
       <div className='container'>
         <ul className='nav nav-tabs justify-content-center'>
@@ -45,6 +51,7 @@ export default class Home extends Component {
       </div>
 
       <div className='container maincontent'>
+      {this.renderAddButton()}
         <div className='col-md-12'>
           <h3> Popular </h3>
           {this.renderCards()}
