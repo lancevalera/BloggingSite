@@ -17,6 +17,10 @@
     overflow: hidden;
 }
 
+.changemin {
+  min-height: 140px !important;
+}
+
 .content-center {
   margin: auto;
   width: 60% !important;
