@@ -10,6 +10,7 @@ import Navbar from './Navbar/navbar.js';
 import Home from './Home/home.js';
 import Profile from './Profile/profile.js';
 import CreatePost from './CreatePost/createpost.js';
+import BlogPost from './BlogPost/blogpost.js';
 
 import { Users } from '../api/users.js';
 
@@ -50,6 +51,7 @@ export default class App extends Component {
             <Route path='/login' render={(props) => <Login router={props} onLogin={this.login.bind(this)} />}/>
             <Route path='/profile' render={(props) => <Profile router={props} user={this.state.user} />} />
             <Route path='/create' render={(props) => <CreatePost router={props} user={this.state.user} /> } />
+            <Route path='/post/:postId' render={(props) => <BlogPost router={props} user={this.state.user}/> } />
           </Switch>
       </div>
       </BrowserRouter>
