@@ -6,6 +6,12 @@
   width: 40% !important;
 }
 
+.addbutton {
+  position: relative;
+  z-index: 10;
+  float: right;
+}
+
 .crop {
     height: 150px;
     overflow: hidden;
