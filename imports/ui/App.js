@@ -9,6 +9,7 @@ import Login from './Login/login.js';
 import Navbar from './Navbar/navbar.js';
 import Home from './Home/home.js';
 import Profile from './Profile/profile.js';
+import CreatePost from './CreatePost/createpost.js';
 
 import { Users } from '../api/users.js';
 
@@ -24,14 +25,11 @@ export default class App extends Component {
   }
 
   login(uname, pword){
-    var valUser = Users.find({username: uname, password: pword}).fetch()
+    var valUser = Users.find({username: uname, password: pword}).fetch();
+    console.log(valUser);
     if(valUser.length > 0){
-      this.setState({user: {
-        username: valUser[0].username,
-        password: valUser[0].password,
-        firstname: valUser[0].fname,
-        lastname: valUser[0].lname
-        }
+      this.setState({
+        user: valUser[0]
       })
       return true;
     } else {
@@ -43,12 +41,15 @@ export default class App extends Component {
     return (
     <div>
     <BrowserRouter history={browserHistory}>
-      <div className=''>
+      <div>
+      <div>
         <Navbar isLoggedIn={this.state.user}/>
+        </div>
           <Switch>
             <Route exact path='/' render={(props) => <Home router={props} user={this.state.user} />}/>
             <Route path='/login' render={(props) => <Login router={props} onLogin={this.login.bind(this)} />}/>
             <Route path='/profile' render={(props) => <Profile router={props} user={this.state.user} />} />
+            <Route path='/create' render={(props) => <CreatePost router={props} user={this.state.user} /> } />
           </Switch>
       </div>
       </BrowserRouter>
