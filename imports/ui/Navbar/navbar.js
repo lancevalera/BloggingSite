@@ -12,7 +12,7 @@ export default class navbar extends Component {
   render() {
     return (
       <div>
-      <nav className="navbar navbar-expand-lg fixed-top bg-primary navbar-transparent">
+      <nav className={"navbar navbar-expand-lg fixed-top " + (this.props.isLoggedIn ? 'bg-primary' : 'navbar-transparent')}>
         <div className="container">
           <div className='dropdown button-dropdown'>
             <DropdownLinks loggedIn={this.props.isLoggedIn} />
