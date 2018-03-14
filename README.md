@@ -15,9 +15,9 @@ react: https://reactjs.org/
 4. Run: meteor
 
 ###### Directory Structure:
-*imports:
-  *imports/ui: Contains all the directories and components needed to make the UI pages
-  *imports/api: Has the javascript files required for the mongo collections
-*client: All files that serve as the index
-*public: All files that are available to the public, mostly contains images
-*server: all code for the server component
+* imports:
+  * imports/ui: Contains all the directories and components needed to make the UI pages
+  * imports/api: Has the javascript files required for the mongo collections
+* client: All files that serve as the index
+* public: All files that are available to the public, mostly contains images
+* server: all code for the server component
