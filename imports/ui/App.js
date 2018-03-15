@@ -11,6 +11,7 @@ import Home from './Home/home.js';
 import Profile from './Profile/profile.js';
 import CreatePost from './CreatePost/createpost.js';
 import BlogPost from './BlogPost/blogpost.js';
+import Register from './Register/register.js';
 
 import { Users } from '../api/users.js';
 
@@ -22,6 +23,23 @@ export default class App extends Component {
 
     this.state = {
       user: null
+    }
+  }
+
+  register(firstname, lastname, uname, pword){
+    var newUser = {
+      fname: firstname,
+      lname: lastname,
+      username: uname,
+      password: pword
+    };
+
+    var success = Users.insert(newUser);
+
+    if(success.nInserted){
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -52,6 +70,7 @@ export default class App extends Component {
             <Route path='/profile' render={(props) => <Profile router={props} user={this.state.user} />} />
             <Route path='/create' render={(props) => <CreatePost router={props} user={this.state.user} /> } />
             <Route path='/post/:postId' render={(props) => <BlogPost router={props} user={this.state.user}/> } />
+            <Route path='/register' render={(props) => <Register router={props} onRegister={this.register.bind(this)}/>} />
           </Switch>
       </div>
       </BrowserRouter>
