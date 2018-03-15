@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 import '../../now-ui-kit.css';
 import './login.css';
@@ -41,7 +42,7 @@ export default class Login extends Component {
                       <input type='submit' value='Login' className="btn btn-primary btn-round bluebtn" style={{width: '100%'}} />
                   </div>
                   <div className='pull-left'>
-                      <a className='nav-link' style={{color: 'white'}}><span> Create Account </span></a>
+                      <Link to='/register' className='nav-link' style={{color: 'white'}}><span> Create Account </span></Link>
                   </div>
                 </form>
 
