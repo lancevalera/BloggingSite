@@ -15,10 +15,20 @@ export default class Login extends Component {
 
   handleSignIn(e) {
     e.preventDefault();
-    var isLoggedIn = this.props.onLogin(this.refs.username.value, this.refs.password.value);
-
-    if(isLoggedIn)
-      this.props.router.history.push("/");
+    Meteor.call('user.find', this.refs.username.value, this.refs.password.value, (err, result) => {
+      if(err){
+        console.log(err)
+      }else{
+        var user = {
+          fname: result[0].fname,
+          lname: result[0].lname,
+          username: result[0].username,
+          _id: result[0]._id
+        }
+        this.props.onLogin(user);
+        this.props.router.history.push("/");
+      }
+    })
   }
 
   render() {
