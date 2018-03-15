@@ -11,15 +11,28 @@ export default class Login extends Component {
 
   handleRegister(e) {
     e.preventDefault();
-    if(this.refs.password.value == this.refs.passwordconfirm.value)
-      var registerSuccess = this.props.onRegister(this.refs.fname.value, this.refs.lname.value, this.refs.uname.value, this.refs.password.value);
-    else
-      alert("Passwords are not the same");
+    if(this.refs.password.value == this.refs.passwordconfirm.value){
+      var newUser = {
+        fname: this.refs.fname.value,
+        lname: this.refs.lname.value,
+        username: this.refs.uname.value,
+        password: this.refs.password.value
+      };
 
-    if(registerSuccess)
-      this.props.router.history.push("/");
-    else
-      alert("Something went wrong :(");
+    Meteor.call('user.insert', newUser, (err, result) => {
+      if(err){
+        console.log(err);
+      }else{
+        newUser = {
+          fname: this.refs.fname.value,
+          lname: this.refs.lname.value,
+          username: this.refs.uname.value
+        }
+        this.props.router.history.push('/');
+        this.props.onRegister(newUser);
+    }
+  });
+    }
   }
 
   render() {
