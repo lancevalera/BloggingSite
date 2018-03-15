@@ -36,7 +36,7 @@ export default class App extends Component {
 
     var success = Users.insert(newUser);
 
-    if(success.nInserted){
+    if(success){
       return true;
     } else {
       return false;
