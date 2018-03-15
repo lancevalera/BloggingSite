@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
+import { withTracker } from 'meteor/react-meteor-data';
+
 import '../../now-ui-kit.css';
 import './home.css';
 import Header from '../Header/header.js';
@@ -10,7 +12,6 @@ import { Posts } from '../../api/posts.js';
 
 export default class Home extends Component {
   constructor(props){
-    Meteor.subscribe('posts');
     super(props);
     this.state = {
       posts: null
@@ -18,9 +19,9 @@ export default class Home extends Component {
   }
 
   componentWillMount() {
-    var allPosts = Posts.find().fetch();
-    console.log(Posts.find().fetch());
-
+    var allPosts;
+    var postIsReady = Meteor.subscribe('posts');
+    allPosts = Posts.find().fetch();
     this.setState({
       posts: allPosts
     })
