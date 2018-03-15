@@ -18,8 +18,8 @@ export default class Home extends Component {
   }
 
   componentWillMount() {
-    var allPosts = Posts.find({}).fetch();
-    console.log(Posts.find({}).fetch());
+    var allPosts = Posts.find().fetch();
+    console.log(Posts.find().fetch());
 
     this.setState({
       posts: allPosts
@@ -29,7 +29,7 @@ export default class Home extends Component {
   renderCards() {
     console.log(this.state);
     return this.state.posts.map((post) => (
-      <Link to={'/post/' + post._id}><Cards key={post._id} body={post} /></Link>
+      <Link to={'/post/' + post._id} key={post._id}><Cards key={post._id} body={post} /></Link>
     ));
   }
 
