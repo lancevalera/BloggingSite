@@ -7,3 +7,13 @@ if (Meteor.isServer) {
       return Users.find();
     });
 }
+
+Meteor.methods({
+  'user.find'(uname, pword){
+    return Users.find({username: uname, password: pword}).fetch();
+  },
+
+  'user.insert'(newUser){
+    return Users.insert(newUser);
+  }
+})
