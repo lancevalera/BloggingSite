@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import { Switch, Route } from 'react-router-dom'
 import { browserHistory } from 'react-router'
+import { Meteor } from 'meteor/meteor';
 
 import '../now-ui-kit.css';
 
@@ -26,34 +27,8 @@ export default class App extends Component {
     }
   }
 
-  register(firstname, lastname, uname, pword){
-    var newUser = {
-      fname: firstname,
-      lname: lastname,
-      username: uname,
-      password: pword
-    };
-
-    var success = Users.insert(newUser);
-
-    if(success){
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  login(uname, pword){
-    var valUser = Users.find({username: uname, password: pword}).fetch();
-    console.log(valUser);
-    if(valUser.length > 0){
-      this.setState({
-        user: valUser[0]
-      })
-      return true;
-    } else {
-      return false;
-    }
+  setUser(userToBeSet){
+    this.setState({user: userToBeSet});
   }
 
   render() {
@@ -66,11 +41,11 @@ export default class App extends Component {
         </div>
           <Switch>
             <Route exact path='/' render={(props) => <Home router={props} user={this.state.user} />}/>
-            <Route path='/login' render={(props) => <Login router={props} onLogin={this.login.bind(this)} />}/>
+            <Route path='/login' render={(props) => <Login router={props} onLogin={this.setUser.bind(this)} />}/>
             <Route path='/profile' render={(props) => <Profile router={props} user={this.state.user} />} />
             <Route path='/create' render={(props) => <CreatePost router={props} user={this.state.user} /> } />
             <Route path='/post/:postId' render={(props) => <BlogPost router={props} user={this.state.user}/> } />
-            <Route path='/register' render={(props) => <Register router={props} onRegister={this.register.bind(this)}/>} />
+            <Route path='/register' render={(props) => <Register router={props} onRegister={this.setUser.bind(this)}/>} />
           </Switch>
       </div>
       </BrowserRouter>
