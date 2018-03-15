@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import { Meteor } from 'meteor/meteor';
 
 import { withTracker } from 'meteor/react-meteor-data';
 
@@ -19,19 +20,22 @@ export default class Home extends Component {
   }
 
   componentWillMount() {
-    var allPosts;
-    var postIsReady = Meteor.subscribe('posts');
-    allPosts = Posts.find().fetch();
-    this.setState({
-      posts: allPosts
-    })
+    Meteor.call('posts.getAll', (err, result) => {
+      if(err)
+        console.log(err);
+      else{
+        this.setState({posts: result});
+        }
+    });
   }
 
   renderCards() {
-    console.log(this.state);
-    return this.state.posts.map((post) => (
-      <Link to={'/post/' + post._id} key={post._id}><Cards key={post._id} body={post} /></Link>
-    ));
+    if(this.state.posts)
+      return this.state.posts.map((post) => (
+        <Link to={'/post/' + post._id} key={post._id}><Cards key={post._id} body={post} /></Link>
+      ));
+    else
+      return null;
   }
 
   renderAddButton(){
@@ -41,6 +45,7 @@ export default class Home extends Component {
 
   render() {
     console.log(this.props);
+    Meteor.subscribe('posts');
     return (
       <div>
       <Header image='/images/home.jpeg' textValue={this.props.user ? 'Hello ' + this.props.user.fname : ''} small={true}/>
