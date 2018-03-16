@@ -24,5 +24,9 @@ Meteor.methods({
 
   'post.delete'(id){
     return Posts.deleteOne({_id: id});
+  },
+
+  'post.update'(id, newPost){
+    return Posts.update({_id: id}, newPost);
   }
 })
