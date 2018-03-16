@@ -28,6 +28,20 @@ export default class CreatePost extends Component {
       });
     else
       this.props.router.history.push("/login");
+
+    if(this.props.router.match.params.postId != null)
+      Meteor.call('posts.getById', this.props.router.match.params.postId, (err, results) => {
+        if(err){
+          console.log(err)
+        }else{
+          console.log(results);
+          this.setState({
+            title: results[0].title,
+            header: results[0].header,
+            body: results[0].body
+          })
+        }
+      })
   }
 
   handleChange(e){
@@ -44,7 +58,18 @@ export default class CreatePost extends Component {
 
   submitPost(e) {
     e.preventDefault();
-    Posts.insert(this.state);
+
+    if(this.props.router.match.params.postId != null)
+      Meteor.call('post.update', this.props.router.match.params.postId, this.state, (err, results) => {
+        if(err){
+          console.log(err)
+        }else{
+
+        }
+      });
+    else
+      Posts.insert(this.state);
+
     this.props.router.history.push("/");
   }
 
@@ -61,12 +86,12 @@ export default class CreatePost extends Component {
         <div className='row'>
         <h4> Your Blog Description </h4>
           <div className="form-group">
-            <input type="text" name='header' value={this.state.postDesc} onChange={this.handleChange} placeholder="A witty (or not) one liner" className="form-control" />
+            <input type="text" name='header' value={this.state.header} onChange={this.handleChange} placeholder="A witty (or not) one liner" className="form-control" />
           </div>
         </div>
         <div className='row'>
         <h4> Your Blog Body </h4>
-          <textarea className="form-control" value={this.state.postBody} onChange={this.handleChange} name='body' placeholder="Your actual blog" rows="5" />
+          <textarea className="form-control" value={this.state.body} onChange={this.handleChange} name='body' placeholder="Your actual blog" rows="5" />
         </div>
 
         <div className='button-container'>
