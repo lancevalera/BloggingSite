@@ -46,6 +46,7 @@ export default class App extends Component {
             <Route path='/create' render={(props) => <CreatePost router={props} user={this.state.user} /> } />
             <Route path='/post/:postId' render={(props) => <BlogPost router={props} user={this.state.user}/> } />
             <Route path='/register' render={(props) => <Register router={props} onRegister={this.setUser.bind(this)}/>} />
+            <Route path='/edit/:postId' render={(props) => <CreatePost router={props} user={this.state.user} />} />
           </Switch>
       </div>
       </BrowserRouter>
