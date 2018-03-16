@@ -16,5 +16,9 @@ Meteor.methods({
   'posts.insert'(newPost){
     var success = Posts.insert(newPost);
     return success;
+  },
+
+  'posts.getById'(id){
+    return Posts.find({_id: id}).fetch();
   }
 })
