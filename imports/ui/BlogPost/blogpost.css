@@ -11,3 +11,13 @@
   color: #616161;
   font-size: 85%;
 }
+
+.deletebtn:hover {
+  color: #C62828 !important;
+  border-color: #C62828 !important;
+}
+
+.updatebtn:hover {
+  color: #1976D2 !important;
+  border-color: #1976D2 !important;
+}
