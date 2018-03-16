@@ -20,5 +20,9 @@ Meteor.methods({
 
   'posts.getById'(id){
     return Posts.find({_id: id}).fetch();
+  },
+
+  'post.delete'(id){
+    return Posts.deleteOne({_id: id});
   }
 })
