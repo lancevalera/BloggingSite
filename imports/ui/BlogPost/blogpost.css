@@ -4,6 +4,7 @@
 
 .blog-container {
   margin-top: 2%;
+  width: 70% !important;
 }
 
 .desc {
