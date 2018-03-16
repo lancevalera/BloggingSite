@@ -11,9 +11,9 @@ export default class UpdateDelete extends Component {
     console.log(this.props);
     return (
       <div>
-        <button className="btn btn-primary btn-round addbutton">Delete</button>
-        
-        <button className="btn btn-primary btn-round addbutton">Update</button>
+        <button className="btn btn-primary btn-round btn-simple">Delete</button>
+
+        <button className="btn btn-primary btn-round btn-simple">Update</button>
       </div>
     );
   }
