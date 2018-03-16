@@ -7,13 +7,17 @@ export default class UpdateDelete extends Component {
     super(props);
   }
 
+  handleDelete(){
+    this.props.onDelete();
+  }
+
   render() {
     console.log(this.props);
     return (
-      <div>
-        <button className="btn btn-primary btn-round btn-simple">Delete</button>
+      <div style={{float: 'right'}}>
+        <button className="btn btn-primary btn-round btn-simple deletebtn" onClick={this.handleDelete.bind(this)}>Delete</button>
 
-        <button className="btn btn-primary btn-round btn-simple">Update</button>
+        <button className="btn btn-primary btn-round btn-simple updatebtn">Update</button>
       </div>
     );
   }
