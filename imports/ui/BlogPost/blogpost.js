@@ -27,6 +27,15 @@ export default class BlogPost extends Component {
     console.log(this.props);
   }
 
+  deletePost(){
+    Meteor.call('post.delete', this.state.post._id, (err, result) => {
+      if(err)
+        console.log(err)
+      else
+        this.props.router.history.push('/');
+    })
+  }
+
   renderPost() {
     if(this.state.post)
       return <PostContent body={this.state.post.body} header={this.state.post.header} author={this.state.post.author}
@@ -38,7 +47,7 @@ export default class BlogPost extends Component {
   renderUpdateDelete() {
     if(this.state.post && this.props.user){
       if(this.state.post.authorID == this.props.user._id)
-        return (<div> <UpdateDelete /> </div>);
+        return (<div style={{width: '120%'}}> <UpdateDelete onDelete={this.deletePost.bind(this)}/> </div>);
       else
         return null;
     } else {
