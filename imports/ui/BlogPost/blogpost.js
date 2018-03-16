@@ -47,7 +47,7 @@ export default class BlogPost extends Component {
   renderUpdateDelete() {
     if(this.state.post && this.props.user){
       if(this.state.post.authorID == this.props.user._id)
-        return (<div style={{width: '120%'}}> <UpdateDelete onDelete={this.deletePost.bind(this)}/> </div>);
+        return (<div style={{width: '120%'}}> <UpdateDelete onDelete={this.deletePost.bind(this)} postId={this.state.post._id}/> </div>);
       else
         return null;
     } else {
