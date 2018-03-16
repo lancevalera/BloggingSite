@@ -10,24 +10,24 @@ export default class CreatePost extends Component {
   constructor(props){
     super(props);
     this.state = {
-      title: null,
-      header: null,
-      body: null,
-      authorID: null
+      title: '',
+      header: '',
+      body: '',
+      authorID: '',
+      dateCreated: new Date()
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.submitPost = this.submitPost.bind(this);
+  }
+
+  componentWillMount() {
     if(this.props.user)
-      this.state = {
-        title: null,
-        header: null,
-        body: null,
+      this.setState({
         authorID: this.props.user._id,
         author: this.props.user.fname + ' ' + this.props.user.lname
-      }
+      });
     else
       this.props.router.history.push("/login");
-
-       this.handleChange = this.handleChange.bind(this);
-       this.submitPost = this.submitPost.bind(this);
   }
 
   handleChange(e){
