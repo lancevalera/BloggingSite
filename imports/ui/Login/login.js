@@ -17,10 +17,10 @@ export default class Login extends Component {
         console.log(err)
       }else{
         var user = {
-          fname: result[0].fname,
-          lname: result[0].lname,
-          username: result[0].username,
-          _id: result[0]._id
+          fname: result.fname,
+          lname: result.lname,
+          username: result.username,
+          _id: result._id
         }
         this.props.onLogin(user);
         this.props.router.history.push("/");

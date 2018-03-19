@@ -30,8 +30,8 @@ export default class Profile extends Component {
         console.log(err)
       else
         this.setState({userInfo: {
-            fname: result[0].fname,
-            lname: result[0].lname
+            fname: result.fname,
+            lname: result.lname
         }
       });
     })
