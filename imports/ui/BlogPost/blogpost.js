@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 
-import '../../now-ui-kit.css';
 import './blogpost.css';
 
 import Header from '../Header/header.js';
@@ -39,14 +38,14 @@ export default class BlogPost extends Component {
   renderPost() {
     if(this.state.post)
       return <PostContent body={this.state.post.body} header={this.state.post.header} author={this.state.post.author}
-              title={this.state.post.title} />
+              title={this.state.post.title} dateCreated={this.state.post.dateCreated}/>
     else
       return null;
   }
 
   renderUpdateDelete() {
     if(this.state.post && this.props.user){
-      if(this.state.post.authorID == this.props.user._id)
+      if(this.state.post.authorID._str == this.props.user._id._str)
         return (<div style={{width: '120%'}}> <UpdateDelete onDelete={this.deletePost.bind(this)} postId={this.state.post._id}/> </div>);
       else
         return null;
