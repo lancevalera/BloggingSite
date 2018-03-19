@@ -4,8 +4,7 @@ const style = {
   backgroundImage: "url(" + window.location.protocol + '//' +  window.location.host + '/images/login.jpeg'  + ")"
 }
 
-// App component - represents the whole app
-export default class Login extends Component {
+export default class Register extends Component {
 
   handleRegister(e) {
     e.preventDefault();
