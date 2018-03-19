@@ -5,14 +5,15 @@ meteorJS: https://www.meteor.com/
 react: https://reactjs.org/
 
 ###### To Run the application
-1. Clone the repo
+1. Clone the repository
+  * git clone https://github.com/lancevalera/BloggingSite.git
 2. Install meteor
-  * On Macs: curl https://install.meteor.com/ | sh
-  * On Windows:
-      1. Install Chocolatey: https://chocolatey.org/install
+  * On Mac terminal: curl https://install.meteor.com/ | sh
+  * On Windows command line:
+      1. Follow instructions to install Chocolatey: https://chocolatey.org/install
       2. Run: choco install meteor
 3. Install all required dependencies: npm install
-4. Run: meteor
+4. Run the command: meteor
 
 ###### Directory Structure:
 * imports:
