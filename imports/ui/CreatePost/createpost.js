@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import '../../now-ui-kit.css';
 import './createpost.css';
 
 import { Posts } from '../../api/posts.js';
@@ -68,7 +67,10 @@ export default class CreatePost extends Component {
         }
       });
     else
-      Posts.insert(this.state);
+      Meteor.call('posts.insert', this.state, (err, results) => {
+        if(err)
+          console.log(err)
+      });
 
     this.props.router.history.push("/");
   }
