@@ -12,7 +12,7 @@ export default class NavbarLinks extends Component {
                 <Link to='/' className="nav-link">Home</Link>
             </li>
             <li className="nav-item">
-                <Link to='/profile' className="nav-link">Profile</Link>
+                <Link to={'/profile/'+this.props.loggedIn._id} className="nav-link">Profile</Link>
             </li>
             <li className="nav-item">
                 <a href="#" className="nav-link">Sign out</a>
