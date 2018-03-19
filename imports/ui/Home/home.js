@@ -30,7 +30,7 @@ export default class Home extends Component {
   renderCards() {
     if(this.state.posts)
       return this.state.posts.map((post) => (
-        <Link to={'/post/' + post._id} key={post._id}><Cards key={post._id} body={post} /></Link>
+        <Cards key={post._id} body={post} />
       ));
     else
       return null;
