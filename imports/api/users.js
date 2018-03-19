@@ -10,7 +10,14 @@ if (Meteor.isServer) {
 
 Meteor.methods({
   'user.find'(uname, pword){
-    return Users.find({username: uname, password: pword}).fetch();
+    var user = Users.find({username: uname, password: pword}, {fname: 1, lname: 1, username: 1}).fetch();
+    var returnUser = {
+      username: user[0].username,
+      fname: user[0].fname,
+      lname: user[0].lname,
+      _id: user[0]._id
+    }
+    return returnUser
   },
 
   'user.insert'(newUser){
@@ -18,6 +25,13 @@ Meteor.methods({
   },
 
   'user.getById'(id){
-    return Users.find({_id: id}).fetch();
+    var user = Users.find({_id: id}, {fname: 1, lname: 1, username: 1}).fetch();
+    var returnUser = {
+      username: user[0].username,
+      fname: user[0].fname,
+      lname: user[0].lname,
+      _id: user[0]._id
+    }
+    return returnUser
   }
 })
