@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import '../../now-ui-kit.css';
-
 const style = {
   backgroundImage: "url(" + window.location.protocol + '//' +  window.location.host + '/images/login.jpeg'  + ")"
 }

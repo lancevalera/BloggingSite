@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 
-import '../../now-ui-kit.css';
 import './navbar.css';
 
 import NavbarLinks from './navbarlinks.js';

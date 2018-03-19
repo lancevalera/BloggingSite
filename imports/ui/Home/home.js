@@ -4,12 +4,10 @@ import { Meteor } from 'meteor/meteor';
 
 import { withTracker } from 'meteor/react-meteor-data';
 
-import '../../now-ui-kit.css';
 import './home.css';
+
 import Header from '../Header/header.js';
 import Cards from './card.js';
-
-import { Posts } from '../../api/posts.js';
 
 export default class Home extends Component {
   constructor(props){

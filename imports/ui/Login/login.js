@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
-import '../../now-ui-kit.css';
 import './login.css';
-
-import LoginForm from './loginForm.js';
 
 const style = {
   backgroundImage: "url(" + window.location.protocol + '//' +  window.location.host + '/images/login.jpeg'  + ")"

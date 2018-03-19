@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import '../../now-ui-kit.css';
 import './profile.css';
 
 import Header from '../Header/header.js';

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import '../../now-ui-kit.css';
-
 export default class DropdownLinks extends Component {
 
   render() {
