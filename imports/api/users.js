@@ -15,5 +15,9 @@ Meteor.methods({
 
   'user.insert'(newUser){
     return Users.insert(newUser);
+  },
+
+  'user.getById'(id){
+    return Users.find({_id: id}).fetch();
   }
 })
