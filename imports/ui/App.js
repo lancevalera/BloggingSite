@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Switch, Route } from 'react-router-dom'
 import { browserHistory } from 'react-router'
 import { Meteor } from 'meteor/meteor';
+import Cookies from 'universal-cookie';
 
 import '../now-ui-kit.css';
 
@@ -13,8 +14,6 @@ import Profile from './Profile/profile.js';
 import CreatePost from './CreatePost/createpost.js';
 import BlogPost from './BlogPost/blogpost.js';
 import Register from './Register/register.js';
-
-import { Users } from '../api/users.js';
 
 // App component - represents the whole app
 export default class App extends Component {
@@ -27,8 +26,17 @@ export default class App extends Component {
     }
   }
 
+  componentWillMount(){
+    const cookies = new Cookies();
+    if(cookies.get('user') != 'null'){
+      this.setUser(cookies.get('user'));
+    }
+  }
+
   setUser(userToBeSet){
     this.setState({user: userToBeSet});
+    const cookies = new Cookies();
+    cookies.set('user', this.state.user, {maxAge: 1200*60});
   }
 
   render() {
