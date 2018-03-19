@@ -7,13 +7,12 @@ import Cookies from 'universal-cookie';
 
 import '../now-ui-kit.css';
 
-import Login from './Login/login.js';
 import Navbar from './Navbar/navbar.js';
 import Home from './Home/home.js';
 import Profile from './Profile/profile.js';
 import CreatePost from './CreatePost/createpost.js';
 import BlogPost from './BlogPost/blogpost.js';
-import Register from './Register/register.js';
+import LoginRegister from './LoginRegister/loginregisterform.js';
 
 // App component - represents the whole app
 export default class App extends Component {
@@ -26,6 +25,7 @@ export default class App extends Component {
     }
   }
 
+  //checks to see if user session is already created
   componentWillMount(){
     const cookies = new Cookies();
     if(cookies.get('user') != 'null'){
@@ -33,6 +33,7 @@ export default class App extends Component {
     }
   }
 
+  //creates user session
   setUser(userToBeSet){
     this.setState({user: userToBeSet});
     const cookies = new Cookies();
@@ -49,11 +50,11 @@ export default class App extends Component {
         </div>
           <Switch>
             <Route exact path='/' render={(props) => <Home router={props} user={this.state.user} />}/>
-            <Route path='/login' render={(props) => <Login router={props} onLogin={this.setUser.bind(this)} />}/>
+            <Route path='/login' render={(props) => <LoginRegister router={props} onLogin={this.setUser.bind(this)} />}/>
             <Route path='/profile/:userId' render={(props) => <Profile router={props} />} />
             <Route path='/create' render={(props) => <CreatePost router={props} user={this.state.user} /> } />
             <Route path='/post/:postId' render={(props) => <BlogPost router={props} user={this.state.user}/> } />
-            <Route path='/register' render={(props) => <Register router={props} onRegister={this.setUser.bind(this)}/>} />
+            <Route path='/register' render={(props) => <LoginRegister router={props} onRegister={this.setUser.bind(this)}/>} />
             <Route path='/edit/:postId' render={(props) => <CreatePost router={props} user={this.state.user} />} />
           </Switch>
       </div>
