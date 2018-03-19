@@ -28,5 +28,9 @@ Meteor.methods({
 
   'post.update'(id, newPost){
     return Posts.update({_id: id}, newPost);
+  },
+
+  'posts.getByUser'(id){
+    return Posts.find({authorID: id}).fetch();
   }
 })
