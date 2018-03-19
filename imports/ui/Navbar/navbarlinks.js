@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
-import '../../now-ui-kit.css';
-
 export default class NavbarLinks extends Component {
 
   render() {
@@ -15,6 +13,9 @@ export default class NavbarLinks extends Component {
             </li>
             <li className="nav-item">
                 <Link to='/profile' className="nav-link">Profile</Link>
+            </li>
+            <li className="nav-item">
+                <a href="#" className="nav-link">Sign out</a>
             </li>
             </ul>
             :
