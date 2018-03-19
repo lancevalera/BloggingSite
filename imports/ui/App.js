@@ -50,7 +50,7 @@ export default class App extends Component {
           <Switch>
             <Route exact path='/' render={(props) => <Home router={props} user={this.state.user} />}/>
             <Route path='/login' render={(props) => <Login router={props} onLogin={this.setUser.bind(this)} />}/>
-            <Route path='/profile' render={(props) => <Profile router={props} user={this.state.user} />} />
+            <Route path='/profile/:userId' render={(props) => <Profile router={props} />} />
             <Route path='/create' render={(props) => <CreatePost router={props} user={this.state.user} /> } />
             <Route path='/post/:postId' render={(props) => <BlogPost router={props} user={this.state.user}/> } />
             <Route path='/register' render={(props) => <Register router={props} onRegister={this.setUser.bind(this)}/>} />
