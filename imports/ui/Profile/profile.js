@@ -3,11 +3,46 @@ import React, { Component } from 'react';
 import './profile.css';
 
 import Header from '../Header/header.js';
+import PostList from './postlist.js'
 
 export default class Profile extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      userInfo: {},
+      userPosts: []
+    };
+  }
+
+  componentWillMount(){
+    var userId = this.props.router.match.params.userId;
+
+    Meteor.call('posts.getByUser', userId, (err, result) => {
+      if(err)
+        console.log(err)
+      else
+        this.setState({userPosts: result})
+    });
+
+    Meteor.call('user.getById', userId, (err, result) => {
+      if(err)
+        console.log(err)
+      else
+        this.setState({userInfo: {
+            fname: result[0].fname,
+            lname: result[0].lname
+        }
+      });
+    })
+  }
+
+  renderPosts(){
+    if(this.state.userPosts.length != 0)
+      return <PostList posts={this.state.userPosts} />
+  }
 
   render() {
-    console.log(this.props);
     return (
       <div>
       <Header image='/images/profile.jpeg' textValue='' small={true}/>
@@ -20,10 +55,10 @@ export default class Profile extends Component {
         </div>
         </div>
 
-        <div className='container'>
+        <div className='container' style={{marginBottom: '5%'}}>
           <div className='row' style="margin-top: 2%; margin-bottom: 2%;" style={{marginTop: '2%', marginBottom: '2%'}}>
             <div className='col-sm-4'>
-              <h3 style={{textAlign: 'center'}}> {this.props.user.fname + ' ' + this.props.user.lname} </h3>
+              <h3 style={{textAlign: 'center'}}> {this.state.userInfo.fname + ' ' + this.state.userInfo.lname} </h3>
               <div className='biocontainer'>
                 <p></p>
               </div>
@@ -31,8 +66,7 @@ export default class Profile extends Component {
           <div className='col-sm-8' style={{boderLeft: '2px solid gray'}}>
             <div className='contentcontainer content-center'>
               <h5> Recently Posted Content: </h5>
-              <ul className="list-group">
-              </ul>
+              {this.renderPosts()}
             </div>
           </div>
         </div>
