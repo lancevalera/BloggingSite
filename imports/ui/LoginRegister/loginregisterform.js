@@ -10,15 +10,8 @@ const style = {
   backgroundImage: "url(" + window.location.protocol + '//' +  window.location.host + '/images/login.jpeg'  + ")"
 }
 
+//represents the page for login / register
 export default class LoginRegister extends Component {
-
-  renderForms(){
-    if(this.props.router.location.pathname == '/login')
-      return <Login onLogin={this.props.onLogin.bind(this)} router={this.props.router}/>
-    else if(this.props.router.location.pathname == '/register')
-      return <Register onRegister={this.props.onRegister.bind(this)} router={this.props.router}/>
-  }
-
   render() {
     return (
       <div className="page-header" filter-color="blue">
@@ -26,7 +19,7 @@ export default class LoginRegister extends Component {
         <div className="container">
             <div className="col-md-4 content-centerlogin content-center">
                 <div className="card card-login card-plain">
-                  {this.renderForms()}
+                  {this.props.children}
                 </div>
             </div>
         </div>
