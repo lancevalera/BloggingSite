@@ -8,6 +8,8 @@ import Cookies from 'universal-cookie';
 import '../now-ui-kit.css';
 
 import Navbar from './Navbar/navbar.js';
+import Login from './LoginRegister/login.js';
+import Register from './LoginRegister/register.js'
 import Home from './Home/home.js';
 import Profile from './Profile/profile.js';
 import CreatePost from './CreatePost/createpost.js';
@@ -50,11 +52,11 @@ export default class App extends Component {
         </div>
           <Switch>
             <Route exact path='/' render={(props) => <Home router={props} user={this.state.user} />}/>
-            <Route path='/login' render={(props) => <LoginRegister router={props} onLogin={this.setUser.bind(this)} />}/>
+            <Route path='/login' render={(props) => <LoginRegister> <Login router={props} onLogin={this.setUser.bind(this)}/> </LoginRegister>}/>
             <Route path='/profile/:userId' render={(props) => <Profile router={props} />} />
             <Route path='/create' render={(props) => <CreatePost router={props} user={this.state.user} /> } />
             <Route path='/post/:postId' render={(props) => <BlogPost router={props} user={this.state.user}/> } />
-            <Route path='/register' render={(props) => <LoginRegister router={props} onRegister={this.setUser.bind(this)}/>} />
+            <Route path='/register' render={(props) => <LoginRegister> <Register router={props} onRegister={this.setUser.bind(this)} /> </LoginRegister>} />
             <Route path='/edit/:postId' render={(props) => <CreatePost router={props} user={this.state.user} />} />
           </Switch>
       </div>
