@@ -86,6 +86,7 @@ export default class CreatePost extends Component {
   render() {
     return (
       <div className='container component-body'>
+      <form onSubmit={this.submitPost.bind(this)}>
         <div className='row'>
         <h4> Your Blog Title </h4>
           <div className="form-group">
@@ -105,8 +106,9 @@ export default class CreatePost extends Component {
         </div>
 
         <div className='button-container'>
-          <button className="btn btn-primary btn-round post-button" onClick={this.submitPost}>Post</button>
+          <input value='Post' className="btn btn-primary btn-round post-button" type='submit' />
         </div>
+        </form>
       </div>
     );
   }
