@@ -7,7 +7,7 @@ const style = {
 }
 
 
-// App component - represents the whole app
+//represents the header on most of the pages
 export default class Header extends Component {
   constructor(props){
     super(props);
