@@ -57,8 +57,6 @@ export default class CreatePost extends Component {
     this.setState({
       [name]: value
     });
-
-    console.log(name);
   }
 
   //calls update or insert based on the existance of postId
