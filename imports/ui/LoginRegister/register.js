@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-const style = {
-  backgroundImage: "url(" + window.location.protocol + '//' +  window.location.host + '/images/login.jpeg'  + ")"
-}
-
+//represents the registration form
 export default class Register extends Component {
 
+  //checks to see that both password fields are equal
+  //inserts the user if it is
   handleRegister(e) {
     e.preventDefault();
     if(this.refs.password.value == this.refs.passwordconfirm.value){
@@ -17,18 +16,22 @@ export default class Register extends Component {
       };
 
     Meteor.call('user.insert', newUser, (err, result) => {
-      if(err){
+      if(err)
         console.log(err);
-      }else{
+
+      if(result.status){
         newUser = {
           fname: this.refs.fname.value,
           lname: this.refs.lname.value,
-          username: this.refs.uname.value
+          username: this.refs.uname.value,
+          _id: result.msg
         }
         this.props.router.history.push('/');
         this.props.onRegister(newUser);
-    }
-  });
+      } else {
+        alert(result.msg);
+      }
+    });
     }
   }
 
