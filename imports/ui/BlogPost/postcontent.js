@@ -5,12 +5,13 @@ import './blogpost.css';
 
 import Header from '../Header/header.js';
 
-
+//represents the post body
 export default class PostContent extends Component {
   constructor(props){
     super(props);
   }
 
+  //renders the date created to a sepecific format
   renderDate(){
     var date = new Date(this.props.dateCreated);
 
@@ -22,7 +23,6 @@ export default class PostContent extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <div>
