@@ -9,8 +9,9 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
+  //finds and returns an object of the user profile
   'user.find'(uname, pword){
-    var user = Users.find({username: uname, password: pword}, {fname: 1, lname: 1, username: 1}).fetch();
+    var user = Users.find({username: uname, password: pword}).fetch();
     var returnUser = {
       username: user[0].username,
       fname: user[0].fname,
@@ -20,12 +21,19 @@ Meteor.methods({
     return returnUser
   },
 
+  //inserts a new user if the username doesn't already exist in the db
+  //returns a status and a msg
   'user.insert'(newUser){
-    return Users.insert(newUser);
+    var usernameExists = Users.find({username: newUser.username}).fetch();
+    if(usernameExists.length > 0)
+      return {status: false, msg: "Username already taken"}
+    else
+      return {status: true, msg: Users.insert(newUser)};
   },
 
+  //finds and returns a user based on the id
   'user.getById'(id){
-    var user = Users.find({_id: id}, {fname: 1, lname: 1, username: 1}).fetch();
+    var user = Users.find({_id: id}).fetch();
     var returnUser = {
       username: user[0].username,
       fname: user[0].fname,
