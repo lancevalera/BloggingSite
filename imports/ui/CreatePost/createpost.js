@@ -4,7 +4,7 @@ import './createpost.css';
 
 import { Posts } from '../../api/posts.js';
 
-// App component - represents the whole app
+//represents the post creation form
 export default class CreatePost extends Component {
   constructor(props){
     super(props);
@@ -19,6 +19,8 @@ export default class CreatePost extends Component {
     this.submitPost = this.submitPost.bind(this);
   }
 
+  //checks to see if the user exits, redirect if not
+  //checks to see if there is a postId to indicate that this is an update and not a create
   componentWillMount() {
     if(this.props.user)
       this.setState({
@@ -28,21 +30,25 @@ export default class CreatePost extends Component {
     else
       this.props.router.history.push("/login");
 
+    //redirect if logged in user is not the author of the document
     if(this.props.router.match.params.postId != null)
       Meteor.call('posts.getById', this.props.router.match.params.postId, (err, results) => {
         if(err){
           console.log(err)
         }else{
-          console.log(results);
-          this.setState({
-            title: results[0].title,
-            header: results[0].header,
-            body: results[0].body
-          })
+          if(results[0].authorID == this.props.user._id)
+            this.setState({
+              title: results[0].title,
+              header: results[0].header,
+              body: results[0].body
+            })
+          else
+            this.props.router.history.push("/");
         }
       })
   }
 
+  //sets the value of the state variable to the value of the input field
   handleChange(e){
     var target = e.target;
     var value = target.value;
@@ -55,6 +61,8 @@ export default class CreatePost extends Component {
     console.log(name);
   }
 
+  //calls update or insert based on the existance of postId
+  //redirect to home once done
   submitPost(e) {
     e.preventDefault();
 
