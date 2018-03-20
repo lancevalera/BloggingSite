@@ -9,6 +9,7 @@ import './home.css';
 import Header from '../Header/header.js';
 import Cards from './card.js';
 
+//represents the home page
 export default class Home extends Component {
   constructor(props){
     super(props);
@@ -17,6 +18,7 @@ export default class Home extends Component {
     }
   }
 
+  //gets all posts, sets it to the state
   componentWillMount() {
     Meteor.call('posts.getAll', (err, result) => {
       if(err)
@@ -27,6 +29,7 @@ export default class Home extends Component {
     });
   }
 
+  //render the cards for the posts
   renderCards() {
     if(this.state.posts)
       return this.state.posts.map((post) => (
@@ -36,13 +39,13 @@ export default class Home extends Component {
       return null;
   }
 
+  //render the add post button if the user session exists
   renderAddButton(){
     if(this.props.user != null)
       return <Link to='/create' className="btn btn-primary btn-round addbutton">Add Post</Link>
   }
 
   render() {
-    console.log(this.props);
     Meteor.subscribe('posts');
     return (
       <div>
@@ -57,7 +60,7 @@ export default class Home extends Component {
       <div className='container maincontent'>
       {this.renderAddButton()}
         <div className='col-md-12'>
-          <h3> Popular </h3>
+          <h3> Newest </h3>
           {this.renderCards()}
         </div>
       </div>
