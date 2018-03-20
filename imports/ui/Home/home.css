@@ -4,6 +4,7 @@
 
 .home-card {
   width: 25% !important;
+  min-height: 200px;
 }
 
 .addbutton {
